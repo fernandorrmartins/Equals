@@ -1,0 +1,12 @@
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\Camadas.dll
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\Camadas.pdb
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\BouncyCastle.Crypto.dll
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\Google.Protobuf.dll
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\MySql.Data.dll
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\Google.Protobuf.xml
+D:\Projetos\AspNet\Equals\Equals\Camadas\bin\Debug\MySql.Data.xml
+D:\Projetos\AspNet\Equals\Equals\Camadas\obj\Debug\Camadas.csprojAssemblyReference.cache
+D:\Projetos\AspNet\Equals\Equals\Camadas\obj\Debug\Camadas.csproj.CoreCompileInputs.cache
+D:\Projetos\AspNet\Equals\Equals\Camadas\obj\Debug\Camadas.csproj.CopyComplete
+D:\Projetos\AspNet\Equals\Equals\Camadas\obj\Debug\Camadas.dll
+D:\Projetos\AspNet\Equals\Equals\Camadas\obj\Debug\Camadas.pdb
