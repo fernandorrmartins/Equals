@@ -59,12 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dados\BaseDados.cs" />
-    <Compile Include="Dados\FagammonCardDados.cs" />
     <Compile Include="Dados\ArquivoDados.cs" />
     <Compile Include="Entidade\ArquivoEntidade.cs" />
-    <Compile Include="Negocio\FagammonCardNegocio.cs" />
     <Compile Include="Negocio\ArquivoNegocio.cs" />
-    <Compile Include="Projecao\FagammonCardInclusaoRetornoProjecao.cs" />
     <Compile Include="Projecao\ArquivoInclusaoRetornoProjecao .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

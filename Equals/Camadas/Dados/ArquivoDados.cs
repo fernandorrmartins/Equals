@@ -20,9 +20,9 @@ namespace Camadas.Dados
         /// </summary>
         /// <param name="ArquivoEntidade"></param>
         /// <returns></returns>
-        public UflaCardInclusaoRetornoProjecao IncluirUflaCard(ArquivoEntidade uflaCardEntidade)
+        public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
         {
-            UflaCardInclusaoRetornoProjecao uflaRetorno = new UflaCardInclusaoRetornoProjecao();
+            ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
             try
             {
                 conectar();
@@ -32,7 +32,7 @@ namespace Camadas.Dados
                 #region Query
                 StringBuilder query = new StringBuilder();
                 query.Append(" INSERT ");
-                query.Append(" UflaCard(TipoRegistro, Estabelecimento, DataProcessamento, PeriodoInicial, ");
+                query.Append(" Arquivo(TipoRegistro, Estabelecimento, DataProcessamento, PeriodoInicial, ");
                 query.Append(" PeriodoFinal, Sequencia, EmpresaAdquirente, NomeArquivo, LinhaArquivo, DataHoraInclusao) ");
                 query.Append(" Values(@TipoRegistro, @Estabelecimento, @DataProcessamento, @PeriodoInicial, ");
                 query.Append(" @PeriodoFinal, @Sequencia, @EmpresaAdquirente, @NomeArquivo, @LinhaArquivo, CURRENT_TIMESTAMP); ");
@@ -41,34 +41,34 @@ namespace Camadas.Dados
                 command.CommandText = query.ToString();
 
                 #region Parâmetros
-                command.Parameters.AddWithValue("@TipoRegistro", uflaCardEntidade.TipoRegistro);
-                command.Parameters.AddWithValue("@Estabelecimento", uflaCardEntidade.Estabelecimento);
-                command.Parameters.AddWithValue("@DataProcessamento", uflaCardEntidade.DataProcessamento);
-                command.Parameters.AddWithValue("@PeriodoInicial", uflaCardEntidade.PeriodoInicial);
-                command.Parameters.AddWithValue("@PeriodoFinal", uflaCardEntidade.PeriodoFinal);
-                command.Parameters.AddWithValue("@Sequencia", uflaCardEntidade.Sequencia);
-                command.Parameters.AddWithValue("@EmpresaAdquirente", uflaCardEntidade.EmpresaAdquirente);
-                command.Parameters.AddWithValue("@NomeArquivo", uflaCardEntidade.NomeArquivo);
-                command.Parameters.AddWithValue("@LinhaArquivo", uflaCardEntidade.LinhaArquivo);
+                command.Parameters.AddWithValue("@TipoRegistro", arquivoEntidade.TipoRegistro);
+                command.Parameters.AddWithValue("@Estabelecimento", arquivoEntidade.Estabelecimento);
+                command.Parameters.AddWithValue("@DataProcessamento", arquivoEntidade.DataProcessamento);
+                command.Parameters.AddWithValue("@PeriodoInicial", arquivoEntidade.PeriodoInicial);
+                command.Parameters.AddWithValue("@PeriodoFinal", arquivoEntidade.PeriodoFinal);
+                command.Parameters.AddWithValue("@Sequencia", arquivoEntidade.Sequencia);
+                command.Parameters.AddWithValue("@EmpresaAdquirente", arquivoEntidade.EmpresaAdquirente);
+                command.Parameters.AddWithValue("@NomeArquivo", arquivoEntidade.NomeArquivo);
+                command.Parameters.AddWithValue("@LinhaArquivo", arquivoEntidade.LinhaArquivo);
                 #endregion
 
                 command.ExecuteNonQuery();
 
-                uflaRetorno.codigo = "0";
-                uflaRetorno.mensagem = "Registro armazenado com sucesso!";
+                arquivoRetorno.codigo = "0";
+                arquivoRetorno.mensagem = "Registro armazenado com sucesso!";
             } catch(Exception e)
             {
-                uflaRetorno.codigo = "1";
-                uflaRetorno.mensagem = e.Message;
+                arquivoRetorno.codigo = "1";
+                arquivoRetorno.mensagem = e.Message;
             } finally
             {
                 desconectar();
             }
 
-            return uflaRetorno;
+            return arquivoRetorno;
         }
 
-        public void EnviarUflaCard(string Identificador)
+        public void EnviarArquivo(string Identificador)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Camadas.Dados
                 command = connection.CreateCommand();
                 #region Query
                 StringBuilder query = new StringBuilder();
-                query.Append(" UPDATE UflaCard ");
+                query.Append(" UPDATE Arquivo ");
                 query.Append(" SET Situacao = 2 ");
                 query.Append(" WHERE ");
                 query.Append("      Identificador = @Identificador; ");
@@ -103,9 +103,9 @@ namespace Camadas.Dados
             }
         }
 
-        public ArquivoEntidade RecuperarUflaCard(int Identificador)
+        public ArquivoEntidade RecuperarArquivo(int Identificador)
         {
-            ArquivoEntidade uflaCardEntidade = new ArquivoEntidade();
+            ArquivoEntidade arquivoEntidade = new ArquivoEntidade();
             try
             {
                 conectar();
@@ -118,7 +118,7 @@ namespace Camadas.Dados
                 query.Append("      Identificador, TipoRegistro, Estabelecimento, DataProcessamento, PeriodoInicial, ");
                 query.Append("      PeriodoFinal, Sequencia, EmpresaAdquirente, NomeArquivo, LinhaArquivo, DataHoraInclusao, Situacao ");
                 query.Append(" FROM ");
-                query.Append("      UflaCard ");
+                query.Append("      Arquivo ");
                 query.Append(" WHERE ");
                 query.Append("      Identificador = @Identificador; ");
                 #endregion
@@ -134,18 +134,18 @@ namespace Camadas.Dados
                 #region Preencher Objeto
                 while (reader.Read())
                 {
-                    uflaCardEntidade.Identificador = reader.GetString("Identificador");
-                    uflaCardEntidade.TipoRegistro = reader.GetString("TipoRegistro");
-                    uflaCardEntidade.Estabelecimento = reader.GetString("Estabelecimento");
-                    uflaCardEntidade.DataProcessamento = reader.GetString("DataProcessamento");
-                    uflaCardEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
-                    uflaCardEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
-                    uflaCardEntidade.Sequencia = reader.GetString("Sequencia");
-                    uflaCardEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
-                    uflaCardEntidade.NomeArquivo = reader.GetString("NomeArquivo");
-                    uflaCardEntidade.LinhaArquivo = reader.GetString("LinhaArquivo");
-                    uflaCardEntidade.DataHoraInclusao = reader.GetString("DataHoraInclusao");
-                    uflaCardEntidade.Situacao = reader.GetString("Situacao");
+                    arquivoEntidade.Identificador = reader.GetString("Identificador");
+                    arquivoEntidade.TipoRegistro = reader.GetString("TipoRegistro");
+                    arquivoEntidade.Estabelecimento = reader.GetString("Estabelecimento");
+                    arquivoEntidade.DataProcessamento = reader.GetString("DataProcessamento");
+                    arquivoEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
+                    arquivoEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
+                    arquivoEntidade.Sequencia = reader.GetString("Sequencia");
+                    arquivoEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
+                    arquivoEntidade.NomeArquivo = reader.GetString("NomeArquivo");
+                    arquivoEntidade.LinhaArquivo = reader.GetString("LinhaArquivo");
+                    arquivoEntidade.DataHoraInclusao = reader.GetString("DataHoraInclusao");
+                    arquivoEntidade.Situacao = reader.GetString("Situacao");
                 }
                 #endregion
 
@@ -159,10 +159,10 @@ namespace Camadas.Dados
                 desconectar();
             }
 
-            return uflaCardEntidade;
+            return arquivoEntidade;
         }
 
-        public IList<ArquivoEntidade> RecuperarUflaCard()
+        public IList<ArquivoEntidade> RecuperarArquivo()
         {
             IList<ArquivoEntidade> lista = new List<ArquivoEntidade>();
             try
@@ -177,7 +177,7 @@ namespace Camadas.Dados
                 query.Append("      Identificador, TipoRegistro, Estabelecimento, DataProcessamento, PeriodoInicial, ");
                 query.Append("      PeriodoFinal, Sequencia, EmpresaAdquirente, NomeArquivo, LinhaArquivo, DataHoraInclusao, Situacao ");
                 query.Append(" FROM ");
-                query.Append("      UflaCard; ");
+                query.Append("      Arquivo; ");
                 #endregion
 
                 command.CommandText = query.ToString();
@@ -185,25 +185,25 @@ namespace Camadas.Dados
                 MySqlDataReader reader = command.ExecuteReader();
 
                 #region Preencher Objeto
-                ArquivoEntidade uflaCardEntidade;
+                ArquivoEntidade arquivoEntidade;
                 while (reader.Read())
                 {
-                    uflaCardEntidade = new ArquivoEntidade();
+                    arquivoEntidade = new ArquivoEntidade();
 
-                    uflaCardEntidade.Identificador = reader.GetString("Identificador");
-                    uflaCardEntidade.TipoRegistro = reader.GetString("TipoRegistro");
-                    uflaCardEntidade.Estabelecimento = reader.GetString("Estabelecimento");
-                    uflaCardEntidade.DataProcessamento = reader.GetString("DataProcessamento");
-                    uflaCardEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
-                    uflaCardEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
-                    uflaCardEntidade.Sequencia = reader.GetString("Sequencia");
-                    uflaCardEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
-                    uflaCardEntidade.NomeArquivo = reader.GetString("NomeArquivo");
-                    uflaCardEntidade.LinhaArquivo = reader.GetString("LinhaArquivo");
-                    uflaCardEntidade.DataHoraInclusao = reader.GetString("DataHoraInclusao");
-                    uflaCardEntidade.Situacao = reader.GetString("Situacao");
+                    arquivoEntidade.Identificador = reader.GetString("Identificador");
+                    arquivoEntidade.TipoRegistro = reader.GetString("TipoRegistro");
+                    arquivoEntidade.Estabelecimento = reader.GetString("Estabelecimento");
+                    arquivoEntidade.DataProcessamento = reader.GetString("DataProcessamento");
+                    arquivoEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
+                    arquivoEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
+                    arquivoEntidade.Sequencia = reader.GetString("Sequencia");
+                    arquivoEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
+                    arquivoEntidade.NomeArquivo = reader.GetString("NomeArquivo");
+                    arquivoEntidade.LinhaArquivo = reader.GetString("LinhaArquivo");
+                    arquivoEntidade.DataHoraInclusao = reader.GetString("DataHoraInclusao");
+                    arquivoEntidade.Situacao = reader.GetString("Situacao");
 
-                    lista.Add(uflaCardEntidade);
+                    lista.Add(arquivoEntidade);
                 }
                 #endregion
 

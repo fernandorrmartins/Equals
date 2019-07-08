@@ -9,13 +9,13 @@ namespace Equals
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/UflaCard")]
-    public class UflaCardController : ApiController
+    public class ArquivoController : ApiController
     {
         [HttpPost]
         [Route("Incluir")]
-        public UflaCardInclusaoRetornoProjecao IncluirUflaCard(ArquivoEntidade uflaCardEntidade)
+        public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
         {
-            return new ArquivoNegocio().IncluirUflaCard(uflaCardEntidade);
+            return new ArquivoNegocio().IncluirArquivo(arquivoEntidade);
         }
 
         [HttpGet]

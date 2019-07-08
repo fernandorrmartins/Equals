@@ -23,55 +23,55 @@ namespace Camadas.Negocio
             uflaCardDados = new ArquivoDados();
         }
 
-        public UflaCardInclusaoRetornoProjecao IncluirUflaCard(ArquivoEntidade uflaCardEntidade)
+        public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
         {
-            UflaCardInclusaoRetornoProjecao uflaRetorno = new UflaCardInclusaoRetornoProjecao();
+            ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
 
             try
             {
-                if (uflaCardEntidade != null
-                    && uflaCardEntidade.LinhaArquivo.ToLower().Contains("uflacard")
-                    && uflaCardEntidade.LinhaArquivo.Length == 50)
+                if (arquivoEntidade != null
+                    && arquivoEntidade.LinhaArquivo.ToLower().Contains("uflacard")
+                    && arquivoEntidade.LinhaArquivo.Length == 50)
                 {
-                    uflaCardEntidade.TipoRegistro = uflaCardEntidade.LinhaArquivo.Substring(0, 1);
-                    uflaCardEntidade.Estabelecimento = uflaCardEntidade.LinhaArquivo.Substring(1, 10);
-                    uflaCardEntidade.DataProcessamento = uflaCardEntidade.LinhaArquivo.Substring(11, 8);
-                    uflaCardEntidade.PeriodoInicial = uflaCardEntidade.LinhaArquivo.Substring(19, 8);
-                    uflaCardEntidade.PeriodoFinal = uflaCardEntidade.LinhaArquivo.Substring(27, 8);
-                    uflaCardEntidade.Sequencia = uflaCardEntidade.LinhaArquivo.Substring(35, 7);
-                    uflaCardEntidade.EmpresaAdquirente = uflaCardEntidade.LinhaArquivo.Substring(42, 8);
+                    arquivoEntidade.TipoRegistro = arquivoEntidade.LinhaArquivo.Substring(0, 1);
+                    arquivoEntidade.Estabelecimento = arquivoEntidade.LinhaArquivo.Substring(1, 10);
+                    arquivoEntidade.DataProcessamento = arquivoEntidade.LinhaArquivo.Substring(11, 8);
+                    arquivoEntidade.PeriodoInicial = arquivoEntidade.LinhaArquivo.Substring(19, 8);
+                    arquivoEntidade.PeriodoFinal = arquivoEntidade.LinhaArquivo.Substring(27, 8);
+                    arquivoEntidade.Sequencia = arquivoEntidade.LinhaArquivo.Substring(35, 7);
+                    arquivoEntidade.EmpresaAdquirente = arquivoEntidade.LinhaArquivo.Substring(42, 8);
 
-                    return uflaCardDados.IncluirUflaCard(uflaCardEntidade);
+                    return uflaCardDados.IncluirArquivo(arquivoEntidade);
                 }
                 else
                 {
-                    uflaRetorno.codigo = "1";
-                    uflaRetorno.mensagem = "Formato de arquivo incorreto!";
+                    arquivoRetorno.codigo = "1";
+                    arquivoRetorno.mensagem = "Formato de arquivo incorreto!";
 
-                    return uflaRetorno;
+                    return arquivoRetorno;
                 }
             } catch(Exception e)
             {
-                uflaRetorno.codigo = "1";
-                uflaRetorno.codigo = "Ocorreu algum erro durante o processamento. Entre em contato com a equipe de suporte.";
+                arquivoRetorno.codigo = "1";
+                arquivoRetorno.codigo = "Ocorreu algum erro durante o processamento. Entre em contato com a equipe de suporte.";
 
-                return uflaRetorno;
+                return arquivoRetorno;
             }
         }
 
         public void EnviarUflaCard(String Identificador)
         {
-            uflaCardDados.EnviarUflaCard(Identificador);
+            uflaCardDados.EnviarArquivo(Identificador);
         }
 
         public ArquivoEntidade RecuperarUflaCard(int Identificador)
         {
-            return uflaCardDados.RecuperarUflaCard(Identificador);
+            return uflaCardDados.RecuperarArquivo(Identificador);
         }
 
         public IList<ArquivoEntidade> RecuperarUflaCard()
         {
-            return uflaCardDados.RecuperarUflaCard();
+            return uflaCardDados.RecuperarArquivo();
         }
     }
 }

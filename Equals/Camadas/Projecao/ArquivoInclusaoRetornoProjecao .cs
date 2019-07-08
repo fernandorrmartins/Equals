@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Camadas.Projecao
 {
-    public class UflaCardInclusaoRetornoProjecao
+    public class ArquivoInclusaoRetornoProjecao
     {
         public String codigo;
         public String mensagem;
