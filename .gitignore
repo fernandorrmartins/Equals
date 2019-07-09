@@ -1,4 +1,10 @@
+# Projeto Equals Visual Studio
 /Equals API/.vs/*
-/Equals API/Camadas/bin/*
-/Equals API/Equals/bin/*
 /Equals API/packages/*
+
+# Projeto Equals Biblioteca Camadas
+/Equals API/Camadas/bin/*
+/Equals API/Camadas/obj*
+
+# Projeto Equals Web APi
+/Equals API/Equals/bin/*
