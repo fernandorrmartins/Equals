@@ -3,8 +3,6 @@ using Camadas.Entidade;
 using Camadas.Projecao;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Camadas.Negocio
 {
@@ -13,22 +11,34 @@ namespace Camadas.Negocio
     /// </summary>
     public class ArquivoNegocio
     {
+        /// <summary>
+        /// Variável responsável por chamar todos os métodos da camada de dados
+        /// </summary>
         private ArquivoDados arquivoDados;
 
         /// <summary>
         /// Método Construtor da Classe Negocio
+        /// Instancia a Variável do Tipo ArquivoDados da Classe
         /// </summary>
         public ArquivoNegocio ()
         {
             arquivoDados = new ArquivoDados();
         }
 
+        /// <summary>
+        /// Método da Camada de Negocios responsável por destrinchar o Arquivo
+        /// e preencher os atributos o ArquivoEntidade, para repassar a camada de dados
+        /// para que possa ser incluida no banco de dados
+        /// </summary>
+        /// <param name="arquivoEntidade"></param>
+        /// <returns></returns>
         public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
         {
             ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
 
             try
             {
+                #region Tratamento do Arquivo Enviado pelo Usuário
                 if (arquivoEntidade != null
                     && arquivoEntidade.LinhaArquivo.ToLower().Contains("uflacard")
                     && arquivoEntidade.LinhaArquivo.Length == 50)
@@ -62,7 +72,9 @@ namespace Camadas.Negocio
 
                     return arquivoRetorno;
                 }
-            } catch(Exception e)
+                #endregion
+            }
+            catch (Exception e)
             {
                 arquivoRetorno.codigo = "1";
                 arquivoRetorno.codigo = "Ocorreu algum erro durante o processamento. Entre em contato com a equipe de suporte.";
@@ -71,16 +83,33 @@ namespace Camadas.Negocio
             }
         }
 
+        /// <summary>
+        /// Método da camada de negocios responsável por atualizar o registro, pelo Identificador
+        /// repassado, para definir a Situação do Arquivo como 'Enviado'
+        /// </summary>
+        /// <param name="Identificador"></param>
+        /// <returns></returns>
         public ArquivoInclusaoRetornoProjecao EnviarArquivo(String Identificador)
         {
             return arquivoDados.EnviarArquivo(Identificador);
         }
 
+        /// <summary>
+        /// Método da camada de negocios responsável por chamar a classe dados para recuperar
+        /// um registro pelo Identificador do Arquivo
+        /// </summary>
+        /// <param name="Identificador"></param>
+        /// <returns></returns>
         public ArquivoEntidade RecuperarArquivo(int Identificador)
         {
             return arquivoDados.RecuperarArquivo(Identificador);
         }
 
+        /// <summary>
+        /// Método da camada de negocios responsável por chamar a classe dados para recuperar
+        /// todos os registros de Arquivos do Banco de Dados e devolver ao cliente
+        /// </summary>
+        /// <returns></returns>
         public IList<ArquivoEntidade> RecuperarArquivo()
         {
             return arquivoDados.RecuperarArquivo();

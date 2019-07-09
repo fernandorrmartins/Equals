@@ -6,7 +6,7 @@ using System.Web;
 namespace Camadas.Entidade
 {
     /// <summary>
-    /// Classe Entidade Responsável por Representar o Objeto UflaCard
+    /// Classe Entidade Responsável por Representar o Objeto Arquivo
     /// </summary>
     public class ArquivoEntidade
     {

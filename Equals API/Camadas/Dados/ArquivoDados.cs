@@ -12,6 +12,7 @@ namespace Camadas.Dados
 {
     /// <summary>
     /// Classe Factory responsável pelo Arquivo
+    /// Possui todas interações com o Banco de Dados e Métodos para Inserir, Modificar e Recuperar Registros
     /// </summary>
     public class ArquivoDados : BaseDados
     {
@@ -22,6 +23,7 @@ namespace Camadas.Dados
         /// <returns></returns>
         public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
         {
+            // Instanciar Retorno para chamada
             ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
             try
             {
@@ -72,8 +74,14 @@ namespace Camadas.Dados
             return arquivoRetorno;
         }
 
+        /// <summary>
+        /// Método responsável por definir a Situação do Arquivo como Enviado
+        /// </summary>
+        /// <param name="Identificador"></param>
+        /// <returns></returns>
         public ArquivoInclusaoRetornoProjecao EnviarArquivo(string Identificador)
         {
+            // Instanciar Retorno para chamada
             ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
             try
             {
@@ -113,8 +121,14 @@ namespace Camadas.Dados
             return arquivoRetorno;
         }
 
+        /// <summary>
+        /// Método para Recuperar Registro especifico de um Arquivo por seu Identificador
+        /// </summary>
+        /// <param name="Identificador"></param>
+        /// <returns></returns>
         public ArquivoEntidade RecuperarArquivo(int Identificador)
         {
+            // Instanciar ArquivoEntidade para Retornar ao Cliente
             ArquivoEntidade arquivoEntidade = new ArquivoEntidade();
             try
             {
@@ -172,8 +186,13 @@ namespace Camadas.Dados
             return arquivoEntidade;
         }
 
+        /// <summary>
+        /// Método responsável por retornar todos os registros de arquivos para o cliente
+        /// </summary>
+        /// <returns></returns>
         public IList<ArquivoEntidade> RecuperarArquivo()
         {
+            // Instanciar lista de ArquivosEntidade
             IList<ArquivoEntidade> lista = new List<ArquivoEntidade>();
             try
             {
