@@ -18,5 +18,17 @@
   <li>Webservice deve estar rodando na porta 82. Se quiser alterar a porta, deve alterar o link para Webservice, que se encontra na pasta:</br>
   Equals > Equals Site > js > equals.js</br>
   Link padrão da Api: http://localhost:82/api/Arquivo/</li>
-  <li>Site pode estar rodando em qualquer porta</li>
+  <li>Site pode estar rodando em qualquer porta.</li>
 </ol>
+
+<h2>Instruções</h2>
+<ol>
+  <li>Executar o script do Schema Físico do Banco de Dados no MySql.</br>
+  <ul>
+    <li>Caminho do Schema:</br>
+    Equals > 07072019_Fisic_Scheme_BD_Equals.sql</br></li>
+    <li>Abrir com qualquer editor de Sql ou Texto, e copiar seu conteúdo.</li>
+    <li>Pelo phpmyadin, acessar a aba Sql, e colar o conteúdo do Schema.</li>
+    <li>Executar a query.</br>
+  </ul>
+ </ol>
