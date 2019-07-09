@@ -3,45 +3,17 @@
 CREATE DATABASE equals;
 USE equals;
 
-CREATE TABLE ARQUIVO (
+CREATE TABLE Arquivo (
     Identificador BigInt PRIMARY KEY AUTO_INCREMENT,
     TipoRegistro varchar(1),
-    Estabelecimento varchar(10),
-    DataProcessamento varchar(8),
-    PeriodoInicial varchar(8),
-    PeriodoFinal varchar(8),
-    Sequencia varchar(7),
-    EmpresaAdquirente varchar(8),
+    Estabelecimento varchar(15),
+    DataProcessamento varchar(15),
+    PeriodoInicial varchar(15),
+    PeriodoFinal varchar(15),
+    Sequencia varchar(15),
+    EmpresaAdquirente varchar(15),
     NomeArquivo varchar(255),
     LinhaArquivo varchar(50),
     DataHoraInclusao DateTime,
-	Situacao tinyint default 1
-);
-
-CREATE TABLE UflaCard (
-    Identificador BigInt PRIMARY KEY AUTO_INCREMENT,
-    TipoRegistro varchar(1),
-    Estabelecimento varchar(10),
-    DataProcessamento varchar(8),
-    PeriodoInicial varchar(8),
-    PeriodoFinal varchar(8),
-    Sequencia varchar(7),
-    EmpresaAdquirente varchar(8),
-    NomeArquivo varchar(255),
-    LinhaArquivo varchar(50),
-    DataHoraInclusao DateTime,
-	Situacao tinyint default 1
-);
-
-CREATE TABLE FagammonCard (
-    Identificador BigInt PRIMARY KEY AUTO_INCREMENT,
-    TipoRegistro varchar(1),
-    DataProcessamento varchar(10),
-    Estabelecimento varchar(8),
-    EmpresaAdquirente varchar(12),
-    Sequencia varchar(7),
-    NomeArquivo varchar(255),
-    LinhaArquivo varchar(36),
-    DataHoraInclusao DateTime,
-	Situacao tinyint default 1
+    Situacao TinyInt default 1
 );

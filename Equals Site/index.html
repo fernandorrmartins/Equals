@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<link rel="shortcut icon" href="imagem/equals.ico" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<script type="text/javascript" src="js/equals.js"></script>
+
+	<title>Equals - Software</title>
+	
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Equals</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+			<ul class="navbar-nav mr-auto">
+			<li id="btnAcessarEnviarArquivo" class="nav-item active">
+				<a class="nav-link" href="#">Enviar Arquivo<span class="sr-only">(página atual)</span></a>
+			</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+			</form>
+		</div>
+	</nav>
+	<div id="caixaEnviar" class="container" style="width: 90%; height: 100%; margin: 0 5% 0 5%;">
+		<div class ="card uper">
+			<div class ="card-header">
+				<label for="file">Arquivo:</label></br>
+				<input type="file" name="file" id="file"></input></br></br>
+				<button class="btn btn-primary" name="enviar" id="enviar">Enviar</button>
+			</div>
+		</div>
+	</div>
+	<div id="caixaTabela" class="container" style="width: 90%; height: 500px; margin: 0 5% 0 5%;">
+		<table class='table table-striped borda' style="width: 100%; font-size: 14px;">
+			<thead>
+				<tr>
+					<td class="mp borda c">Identificador</td>
+					<td class="mp borda c">Empresa</td>
+					<td class="mp borda c">Arquivo</td>
+					<td class="mp borda c">Texto</td>
+					<td class="mp borda c">Situacao</td>
+					<td class="mp borda c">Data/Hora Inclusão</td>
+					<td class="mp borda c" colspan='2'>Ação</td>
+				</tr>
+			</thead>
+			<tbody id="corpoTabela">
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
