@@ -31,4 +31,6 @@
     <li>Pelo phpmyadin, acessar a aba Sql, e colar o conteúdo do Schema.</li>
     <li>Executar a query.</br>
   </ul>
+  <li>Iniciar o IIS</li>
+  <li>Acessar o site localmente, pela porta configurada</li>
  </ol>
