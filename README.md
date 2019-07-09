@@ -31,6 +31,12 @@
     <li>Pelo phpmyadin, acessar a aba Sql, e colar o conteúdo do Schema.</li>
     <li>Executar a query.</br>
   </ul>
+  <li>Acessar Solução do Projeto Utilizando o Visual Studio(Como aternativa, pode pegar a api já compilado no .rar na pasta do projeto):</li>
+  <ul>
+    <li>Clicar com botão direito sobre o projeto Camadas, e compilar.</li>
+    <li>Clicar com botão direito sobre o projeto Equals, e publicar.</li>
+    <li>Copiar o projeto compilado para o IIS.</li>
+  </ul>
   <li>Iniciar o IIS</li>
   <li>Acessar o site localmente, pela porta configurada</li>
  </ol>
