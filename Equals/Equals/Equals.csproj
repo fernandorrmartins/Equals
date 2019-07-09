@@ -102,8 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="FagammonCardController.cs" />
-    <Compile Include="UflaCardController.cs" />
+    <Compile Include="ArquivoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

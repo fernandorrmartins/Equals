@@ -11,7 +11,7 @@ using System.Web;
 namespace Camadas.Dados
 {
     /// <summary>
-    /// Classe Factory responsável pelo UflaCard
+    /// Classe Factory responsável pelo Arquivo
     /// </summary>
     public class ArquivoDados : BaseDados
     {
@@ -32,10 +32,14 @@ namespace Camadas.Dados
                 #region Query
                 StringBuilder query = new StringBuilder();
                 query.Append(" INSERT ");
-                query.Append(" Arquivo(TipoRegistro, Estabelecimento, DataProcessamento, PeriodoInicial, ");
-                query.Append(" PeriodoFinal, Sequencia, EmpresaAdquirente, NomeArquivo, LinhaArquivo, DataHoraInclusao) ");
-                query.Append(" Values(@TipoRegistro, @Estabelecimento, @DataProcessamento, @PeriodoInicial, ");
-                query.Append(" @PeriodoFinal, @Sequencia, @EmpresaAdquirente, @NomeArquivo, @LinhaArquivo, CURRENT_TIMESTAMP); ");
+                query.Append(" Arquivo(TipoRegistro, Estabelecimento, DataProcessamento, ");
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoInicial)) query.Append(" PeriodoInicial,");
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoFinal)) query.Append(" PeriodoFinal,");
+                query.Append(" Sequencia, EmpresaAdquirente, NomeArquivo, LinhaArquivo, DataHoraInclusao) ");
+                query.Append(" Values(@TipoRegistro, @Estabelecimento, @DataProcessamento, ");
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoInicial)) query.Append(" @PeriodoInicial,");
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoFinal)) query.Append(" @PeriodoFinal,");
+                query.Append(" @Sequencia, @EmpresaAdquirente, @NomeArquivo, @LinhaArquivo, CURRENT_TIMESTAMP); ");
                 #endregion
 
                 command.CommandText = query.ToString();
@@ -44,8 +48,8 @@ namespace Camadas.Dados
                 command.Parameters.AddWithValue("@TipoRegistro", arquivoEntidade.TipoRegistro);
                 command.Parameters.AddWithValue("@Estabelecimento", arquivoEntidade.Estabelecimento);
                 command.Parameters.AddWithValue("@DataProcessamento", arquivoEntidade.DataProcessamento);
-                command.Parameters.AddWithValue("@PeriodoInicial", arquivoEntidade.PeriodoInicial);
-                command.Parameters.AddWithValue("@PeriodoFinal", arquivoEntidade.PeriodoFinal);
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoInicial)) command.Parameters.AddWithValue("@PeriodoInicial", arquivoEntidade.PeriodoInicial);
+                if (!String.IsNullOrEmpty(arquivoEntidade.PeriodoFinal)) command.Parameters.AddWithValue("@PeriodoFinal", arquivoEntidade.PeriodoFinal);
                 command.Parameters.AddWithValue("@Sequencia", arquivoEntidade.Sequencia);
                 command.Parameters.AddWithValue("@EmpresaAdquirente", arquivoEntidade.EmpresaAdquirente);
                 command.Parameters.AddWithValue("@NomeArquivo", arquivoEntidade.NomeArquivo);

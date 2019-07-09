@@ -8,7 +8,7 @@ using System.Web.Http.Cors;
 namespace Equals
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("api/UflaCard")]
+    [RoutePrefix("api/Arquivo")]
     public class ArquivoController : ApiController
     {
         [HttpPost]
@@ -20,23 +20,23 @@ namespace Equals
 
         [HttpGet]
         [Route("Recuperar")]
-        public ArquivoEntidade RecuperarUflaCard(int Identificador)
+        public ArquivoEntidade RecuperarArquivo(int Identificador)
         {
-            return new ArquivoNegocio().RecuperarUflaCard(Identificador);
+            return new ArquivoNegocio().RecuperarArquivo(Identificador);
         }
 
         [HttpGet]
         [Route("Recuperar")]
-        public IList<ArquivoEntidade> RecuperarTodosUflaCard()
+        public IList<ArquivoEntidade> RecuperarTodosArquivos()
         {
-            return new ArquivoNegocio().RecuperarUflaCard();
+            return new ArquivoNegocio().RecuperarArquivo();
         }
 
         [HttpGet]
         [Route("Enviar")]
-        public void EnviarUflaCard(string Identificador)
+        public void EnviarArquivo(string Identificador)
         {
-            new ArquivoNegocio().EnviarUflaCard(Identificador);
+            new ArquivoNegocio().EnviarArquivo(Identificador);
         }
     }
 }

@@ -13,14 +13,14 @@ namespace Camadas.Negocio
     /// </summary>
     public class ArquivoNegocio
     {
-        private ArquivoDados uflaCardDados;
+        private ArquivoDados arquivoDados;
 
         /// <summary>
         /// Método Construtor da Classe Negocio
         /// </summary>
         public ArquivoNegocio ()
         {
-            uflaCardDados = new ArquivoDados();
+            arquivoDados = new ArquivoDados();
         }
 
         public ArquivoInclusaoRetornoProjecao IncluirArquivo(ArquivoEntidade arquivoEntidade)
@@ -41,7 +41,19 @@ namespace Camadas.Negocio
                     arquivoEntidade.Sequencia = arquivoEntidade.LinhaArquivo.Substring(35, 7);
                     arquivoEntidade.EmpresaAdquirente = arquivoEntidade.LinhaArquivo.Substring(42, 8);
 
-                    return uflaCardDados.IncluirArquivo(arquivoEntidade);
+                    return arquivoDados.IncluirArquivo(arquivoEntidade);
+                }
+                else if (arquivoEntidade != null
+                 && arquivoEntidade.LinhaArquivo.ToLower().Contains("fagammoncard")
+                 && arquivoEntidade.LinhaArquivo.Length == 36)
+                {
+                    arquivoEntidade.TipoRegistro = arquivoEntidade.LinhaArquivo.Substring(0, 1);
+                    arquivoEntidade.DataProcessamento = arquivoEntidade.LinhaArquivo.Substring(1, 8);
+                    arquivoEntidade.Estabelecimento = arquivoEntidade.LinhaArquivo.Substring(9, 8);
+                    arquivoEntidade.EmpresaAdquirente = arquivoEntidade.LinhaArquivo.Substring(17, 12);
+                    arquivoEntidade.Sequencia = arquivoEntidade.LinhaArquivo.Substring(29, 7);
+
+                    return arquivoDados.IncluirArquivo(arquivoEntidade);
                 }
                 else
                 {
@@ -59,19 +71,19 @@ namespace Camadas.Negocio
             }
         }
 
-        public void EnviarUflaCard(String Identificador)
+        public void EnviarArquivo(String Identificador)
         {
-            uflaCardDados.EnviarArquivo(Identificador);
+            arquivoDados.EnviarArquivo(Identificador);
         }
 
-        public ArquivoEntidade RecuperarUflaCard(int Identificador)
+        public ArquivoEntidade RecuperarArquivo(int Identificador)
         {
-            return uflaCardDados.RecuperarArquivo(Identificador);
+            return arquivoDados.RecuperarArquivo(Identificador);
         }
 
-        public IList<ArquivoEntidade> RecuperarUflaCard()
+        public IList<ArquivoEntidade> RecuperarArquivo()
         {
-            return uflaCardDados.RecuperarArquivo();
+            return arquivoDados.RecuperarArquivo();
         }
     }
 }
