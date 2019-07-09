@@ -3,11 +3,12 @@
 <h2>Projetos</h2>
 <ol>
   <li>Webservice Asp.net</li>
+  <li>Banco de Dados MySql</li>
   <li>Site Html + javascript</li>
 </ol>
 
 <h2>Requisitos para Teste:</h2>
-<h3>Ps: Esses requisitos são para testar site e servidor no mesmo computador. Para testar remoto, é necessário liberar porta, e efetuar configurações devidas.<h3>
+<h3>Ps: Esses requisitos são para testar site e servidor no mesmo computador. Para testar remoto, é necessário liberar porta, e efetuar configurações devidas.</h3>
 <ol>
   <li>Windows ou Windows Server pois o Webservice é Asp.net e é necessário o IIS instalado e ativo</li>
   <li>Banco de Dados MySql instalado na mesma máquina que o Webservice. Usuário padrão do MySql para acesso local.</br>
