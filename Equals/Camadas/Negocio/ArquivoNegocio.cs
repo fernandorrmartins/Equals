@@ -9,7 +9,7 @@ using System.Web;
 namespace Camadas.Negocio
 {
     /// <summary>
-    /// Classe responsável pelos métodos de negocio relacionados ao UflaCard
+    /// Classe responsável pelos métodos de negocio relacionados ao Arquivo
     /// </summary>
     public class ArquivoNegocio
     {
@@ -71,9 +71,9 @@ namespace Camadas.Negocio
             }
         }
 
-        public void EnviarArquivo(String Identificador)
+        public ArquivoInclusaoRetornoProjecao EnviarArquivo(String Identificador)
         {
-            arquivoDados.EnviarArquivo(Identificador);
+            return arquivoDados.EnviarArquivo(Identificador);
         }
 
         public ArquivoEntidade RecuperarArquivo(int Identificador)

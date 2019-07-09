@@ -34,9 +34,9 @@ namespace Equals
 
         [HttpGet]
         [Route("Enviar")]
-        public void EnviarArquivo(string Identificador)
+        public ArquivoInclusaoRetornoProjecao EnviarArquivo(string Identificador)
         {
-            new ArquivoNegocio().EnviarArquivo(Identificador);
+            return new ArquivoNegocio().EnviarArquivo(Identificador);
         }
     }
 }

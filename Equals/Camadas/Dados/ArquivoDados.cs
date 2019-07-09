@@ -72,8 +72,9 @@ namespace Camadas.Dados
             return arquivoRetorno;
         }
 
-        public void EnviarArquivo(string Identificador)
+        public ArquivoInclusaoRetornoProjecao EnviarArquivo(string Identificador)
         {
+            ArquivoInclusaoRetornoProjecao arquivoRetorno = new ArquivoInclusaoRetornoProjecao();
             try
             {
                 conectar();
@@ -96,15 +97,20 @@ namespace Camadas.Dados
 
                 command.ExecuteNonQuery();
 
+                arquivoRetorno.codigo = "0";
+                arquivoRetorno.mensagem = "Arquivo enviado com exito!";
             }
             catch (Exception e)
             {
-                Debug.Print(e.Message);
+                arquivoRetorno.codigo = "'";
+                arquivoRetorno.mensagem = "Ocorreu um erro: " + e.Message;
             }
             finally
             {
                 desconectar();
             }
+
+            return arquivoRetorno;
         }
 
         public ArquivoEntidade RecuperarArquivo(int Identificador)
@@ -142,8 +148,8 @@ namespace Camadas.Dados
                     arquivoEntidade.TipoRegistro = reader.GetString("TipoRegistro");
                     arquivoEntidade.Estabelecimento = reader.GetString("Estabelecimento");
                     arquivoEntidade.DataProcessamento = reader.GetString("DataProcessamento");
-                    arquivoEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
-                    arquivoEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
+                    arquivoEntidade.PeriodoInicial = (reader["PeriodoInicial"] != DBNull.Value ? reader.GetString("PeriodoInicial") : null);
+                    arquivoEntidade.PeriodoFinal = (reader["PeriodoFinal"] != DBNull.Value ? reader.GetString("PeriodoFinal") : null);
                     arquivoEntidade.Sequencia = reader.GetString("Sequencia");
                     arquivoEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
                     arquivoEntidade.NomeArquivo = reader.GetString("NomeArquivo");
@@ -198,8 +204,8 @@ namespace Camadas.Dados
                     arquivoEntidade.TipoRegistro = reader.GetString("TipoRegistro");
                     arquivoEntidade.Estabelecimento = reader.GetString("Estabelecimento");
                     arquivoEntidade.DataProcessamento = reader.GetString("DataProcessamento");
-                    arquivoEntidade.PeriodoInicial = reader.GetString("PeriodoInicial");
-                    arquivoEntidade.PeriodoFinal = reader.GetString("PeriodoFinal");
+                    arquivoEntidade.PeriodoInicial = (reader["PeriodoInicial"] != DBNull.Value ? reader.GetString("PeriodoInicial") : null);
+                    arquivoEntidade.PeriodoFinal = (reader["PeriodoFinal"] != DBNull.Value ? reader.GetString("PeriodoFinal") : null);
                     arquivoEntidade.Sequencia = reader.GetString("Sequencia");
                     arquivoEntidade.EmpresaAdquirente = reader.GetString("EmpresaAdquirente");
                     arquivoEntidade.NomeArquivo = reader.GetString("NomeArquivo");
